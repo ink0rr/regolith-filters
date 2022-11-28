@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "Lazuli",
+      "runWith": "deno",
+      "script": "./main.ts"
+    }
+  ]
+}
