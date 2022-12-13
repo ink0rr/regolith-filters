@@ -1,8 +1,13 @@
 import { walk } from "https://deno.land/std@0.165.0/fs/mod.ts";
 import { resolve } from "https://deno.land/std@0.165.0/path/mod.ts";
-import { AddonFile, lazuli } from "https://deno.land/x/lazuli/mod.ts";
+import { AddonFile, lazuli } from "https://deno.land/x/lazuli@0.0.1/mod.ts";
 
-const path = Deno.args[0] ?? "./data/lazuli/export";
+interface Settings {
+  path?: string;
+}
+const settings: Settings = JSON.parse(Deno.args[0] ?? "{}");
+
+const path = settings.path ?? "./data/lazuli/export";
 
 const files: AddonFile[] = [];
 
