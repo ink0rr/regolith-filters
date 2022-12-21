@@ -1,6 +1,6 @@
-import { walk } from "https://deno.land/std@0.165.0/fs/mod.ts";
-import { resolve } from "https://deno.land/std@0.165.0/path/mod.ts";
-import { AddonFile, lazuli } from "https://deno.land/x/lazuli@0.0.1/mod.ts";
+import { walk } from "https://deno.land/std@0.170.0/fs/mod.ts";
+import { resolve } from "https://deno.land/std@0.170.0/path/mod.ts";
+import { AddonFile, lazuli } from "https://deno.land/x/lazuli@0.0.2/mod.ts";
 
 interface Settings {
   path?: string;
