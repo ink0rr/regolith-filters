@@ -1,0 +1,5 @@
+pack.name=Test RP
+pack.description=Resource Pack for Test
+
+entity.test:pig.name=Pig
+item.spawn_egg.entity.test:pig.name=Spawn Pig

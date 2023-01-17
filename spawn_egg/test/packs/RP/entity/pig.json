@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "test:pig",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/pig"
+      },
+      "geometry": {
+        "default": "geometry.pig"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

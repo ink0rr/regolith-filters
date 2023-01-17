@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "Spawn Egg",
+      "runWith": "deno",
+      "script": "./main.ts"
+    }
+  ]
+}

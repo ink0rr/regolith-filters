@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Bedrock-OSS/regolith-schemas/main/config/v1.1.json",
+  "author": "ink0rr",
+  "name": "Test",
+  "packs": {
+    "behaviorPack": "./packs/BP",
+    "resourcePack": "./packs/RP"
+  },
+  "regolith": {
+    "dataPath": "./packs/data",
+    "filterDefinitions": {
+      "spawn_egg": {
+        "runWith": "deno",
+        "script": "../main.ts"
+      }
+    },
+    "profiles": {
+      "default": {
+        "export": {
+          "target": "development"
+        },
+        "filters": [
+          {
+            "filter": "spawn_egg"
+          }
+        ]
+      },
+      "test": {
+        "export": {
+          "target": "local"
+        },
+        "filters": [
+          {
+            "profile": "default"
+          }
+        ]
+      }
+    }
+  }
+}
