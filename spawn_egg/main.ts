@@ -3,12 +3,21 @@ import { Image } from "https://deno.land/x/imagescript@1.2.15/mod.ts";
 import { EntityResource, readJson, writeJson } from "https://deno.land/x/lazuli@0.0.4/mod.ts";
 
 interface Settings {
+  ignore?: string[];
   overwrite?: boolean;
 }
 
 const settings: Settings = JSON.parse(Deno.args[0] ?? "{}");
 
-for await (const file of walk("RP/entity", { exts: ["json"] })) {
+const skip = settings.ignore?.map((str) => {
+  const match = str.match(/^\/(.*)\/(.*)$/);
+  if (match) {
+    return new RegExp(match[1], match[2]);
+  }
+  return new RegExp(str);
+});
+
+for await (const file of walk("RP/entity", { exts: ["json"], skip })) {
   const entity = await readJson<EntityResource>(file.path);
   const rp = entity["minecraft:client_entity"].description;
 
