@@ -1,9 +1,9 @@
 {
   "filters": [
     {
-      "runWith": "exe",
-      "exe": "bin/swc.exe",
-      "command": "compile data/scripts --out-dir BP/scripts"
+      "name": "swc",
+      "runWith": "nodejs",
+      "script": "./main.js"
     }
   ]
 }
