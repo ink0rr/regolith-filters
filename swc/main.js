@@ -11,17 +11,17 @@ const files = await new fdir()
 
 if (Array.isArray(files)) {
   for (const file of files) {
-    const path = file.toString();
-    const transformed = await transformFile(path, {
+    const source = file.toString();
+    const { code } = await transformFile(source, {
       jsc: {
         target: "es2020",
       },
     });
-    const dest = path.replace(".ts", ".js");
+    const dest = source.replace(".ts", ".js");
 
     await Promise.all([
-      writeFile(dest, transformed.code),
-      unlink(file.toString()),
+      writeFile(dest, code),
+      unlink(source),
     ]);
   }
 }
