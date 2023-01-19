@@ -1,5 +1,9 @@
 {
-  "deno.enable": true,
+  "deno.enablePaths": [
+    "./lazuli",
+    "./spawn_egg",
+    "./sync_manifest"
+  ],
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.rulers": [120],
