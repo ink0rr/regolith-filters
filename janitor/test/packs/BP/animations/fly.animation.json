@@ -1,0 +1,7 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.fly.up": {},
+    "animation.fly.down": {}
+  }
+}

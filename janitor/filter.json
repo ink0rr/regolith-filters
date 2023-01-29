@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "Janitor",
+      "runWith": "deno",
+      "script": "./main.ts"
+    }
+  ]
+}

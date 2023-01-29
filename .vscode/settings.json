@@ -1,5 +1,6 @@
 {
   "deno.enablePaths": [
+    "./janitor",
     "./lazuli",
     "./spawn_egg",
     "./sync_manifest"

@@ -1,0 +1,4 @@
+pack.name=Test RP
+pack.description=Resource Pack for Test
+entity.custom:test_entity.name=Test Entity
+item.spawn_egg.entity.custom:test_entity.name=Spawn Test Entity
