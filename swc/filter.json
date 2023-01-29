@@ -1,9 +1,0 @@
-{
-  "filters": [
-    {
-      "name": "swc",
-      "runWith": "nodejs",
-      "script": "./main.js"
-    }
-  ]
-}
