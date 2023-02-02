@@ -1,4 +1,4 @@
-import { EntityBehavior, readJson } from "https://deno.land/x/lazuli@0.0.4/mod.ts";
+import { EntityBehavior, readJson, writeJson } from "https://deno.land/x/lazuli@0.0.4/mod.ts";
 import glob from "npm:tiny-glob";
 import { getKeys } from "./getKeys.ts";
 import { cleanFiles } from "./cleanFiles.ts";
@@ -13,14 +13,19 @@ export async function checkBP() {
 
     if (!bp.component_groups) continue;
 
+    let changed = false;
     const events = JSON.stringify(bp.events);
     for (const key of Object.keys(bp.component_groups)) {
       // Not sure how reliable using regex is, but it works for now
       const match = events.match(RegExp(`(?<="component_groups":\\[.*)"${key}"(?=.*\\])`));
       if (!match) {
+        changed = true;
         console.log(`Unused component_group: "${key}" in ${path}`);
         delete bp.component_groups[key];
       }
+    }
+    if (changed) {
+      await writeJson(path, data);
     }
   }
 
