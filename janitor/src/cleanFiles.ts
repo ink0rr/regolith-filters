@@ -9,7 +9,7 @@ export async function cleanFiles(pack: "BP" | "RP", dir: string, keys: Set<strin
 
     for (const key of Object.keys(data[dir])) {
       if (!keys.has(key)) {
-        console.log(`Unused key: "${key}" in ${path}`);
+        console.warn(`Unused key: "${key}" in ${path}`);
         delete data[dir][key];
       }
     }
