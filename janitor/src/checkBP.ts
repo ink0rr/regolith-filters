@@ -41,6 +41,8 @@ export async function checkBP() {
     }
   }
 
-  cleanFiles("BP", "animations", keys);
-  cleanFiles("BP", "animation_controllers", keys);
+  await Promise.all([
+    cleanFiles("BP", "animations", keys),
+    cleanFiles("BP", "animation_controllers", keys),
+  ]);
 }

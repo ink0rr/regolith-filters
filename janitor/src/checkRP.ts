@@ -1,7 +1,7 @@
 import { Attachable, EntityResource, readJson } from "https://deno.land/x/lazuli@0.0.4/mod.ts";
 import glob from "npm:tiny-glob";
-import { getKeys } from "./getKeys.ts";
 import { cleanFiles } from "./cleanFiles.ts";
+import { getKeys } from "./getKeys.ts";
 
 export async function checkRP() {
   const keys = new Set<string>();
@@ -18,7 +18,9 @@ export async function checkRP() {
     getKeys(rp, keys);
   }
 
-  cleanFiles("RP", "animations", keys);
-  cleanFiles("RP", "animation_controllers", keys);
-  cleanFiles("RP", "render_controllers", keys);
+  await Promise.all([
+    cleanFiles("RP", "animations", keys),
+    cleanFiles("RP", "animation_controllers", keys),
+    cleanFiles("RP", "render_controllers", keys),
+  ]);
 }
