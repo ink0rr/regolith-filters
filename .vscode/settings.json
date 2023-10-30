@@ -1,5 +1,6 @@
 {
   "deno.enablePaths": [
+    "./esbuild_deno",
     "./janitor",
     "./lazuli",
     "./spawn_egg",

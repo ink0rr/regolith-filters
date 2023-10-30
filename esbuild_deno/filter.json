@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "Esbuild Deno",
+      "runWith": "deno",
+      "script": "./main.ts"
+    }
+  ]
+}
