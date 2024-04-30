@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "esbuild",
+      "runWith": "nodejs",
+      "script": "./main.js"
+    }
+  ]
+}
