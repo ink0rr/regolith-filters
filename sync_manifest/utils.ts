@@ -1,4 +1,4 @@
-import * as JSONC from "https://deno.land/std@0.170.0/encoding/jsonc.ts";
+import * as JSONC from "jsr:@std/jsonc@0.224.0";
 
 export async function readJson<T>(path: string) {
   return JSONC.parse(await Deno.readTextFile(path)) as T;
