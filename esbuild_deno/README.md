@@ -1,12 +1,40 @@
 # Esbuild Deno
 
-Esbuild executor for Deno.
+Filter to run [esbuild](https://esbuild.github.io/) with Regolith and Deno.
 
 ## Settings
 
-| Name       | Description           | Default                  |
-| ---------- | --------------------- | ------------------------ |
-| configPath | deno.json config path | `./deno.json`            |
-| entryPoint | Entry point file path | `./data/scripts/main.ts` |
-| outfile    | Output file path      | `./BP/scripts/main.js`   |
-| minify     | Minify output         | `true`                   |
+Refer to esbuild [documentation page](https://esbuild.github.io/api) for a complete list of settings.
+
+### Default Settings
+
+```json
+{
+  "bundle": true,
+  "entryPoints": [
+    "./data/scripts/main.ts"
+  ],
+  "external": [
+    "@minecraft/server",
+    "@minecraft/server-ui"
+  ],
+  "format": "esm",
+  "outfile": "./BP/scripts/main.js"
+}
+```
+
+### Change `deno.json` Path
+
+You can pass in an argument to change the `deno.json` path.
+
+```json
+{
+  "filter": "esbuild_deno",
+  "arguments": [
+    "./data/deno.json"
+  ],
+  "settings": {
+    "minify": true
+  }
+}
+```

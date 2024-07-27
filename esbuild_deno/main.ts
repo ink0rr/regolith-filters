@@ -1,36 +1,34 @@
-import { resolve } from "https://deno.land/std@0.213.0/path/resolve.ts";
-import * as esbuild from "https://deno.land/x/esbuild@v0.20.0/mod.js";
-import { denoPlugins } from "https://deno.land/x/esbuild_deno_loader@0.8.5/mod.ts";
-import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
+import * as esbuild from "https://deno.land/x/esbuild@v0.23.0/mod.js";
+import { denoPlugins } from "jsr:@luca/esbuild-deno-loader@0.10.3";
+import { resolve } from "jsr:@std/path@1.0.2";
 
-const ROOT_DIR = Deno.env.get("ROOT_DIR")!;
+function parseArgs(args: string[]): [Record<string, unknown>, ...string[]] {
+  try {
+    const settings = JSON.parse(args[0]);
+    return [settings, ...args.slice(1)];
+  } catch {
+    return [{}, ...args];
+  }
+}
 
-const {
-  configPath,
-  entryPoint,
-  outfile,
-  minify,
-} = z.object({
-  configPath: z.string().default("./deno.json").transform((path) => resolve(ROOT_DIR, path)),
-  entryPoint: z.string().default("./data/scripts/main.ts"),
-  outfile: z.string().default("./BP/scripts/main.js"),
-  minify: z.boolean().default(true),
-}).parse(JSON.parse(Deno.args[0] ?? "{}"));
+const [settings, path] = parseArgs(Deno.args);
+
+const configPath = resolve(Deno.env.get("ROOT_DIR")!, path ?? "./deno.json");
 
 try {
   await esbuild.build({
     plugins: [...denoPlugins({ configPath })],
     bundle: true,
     entryPoints: [
-      entryPoint,
+      "./data/scripts/main.ts",
     ],
     external: [
       "@minecraft/server",
       "@minecraft/server-ui",
     ],
     format: "esm",
-    outfile,
-    minify,
+    outfile: "./BP/scripts/main.js",
+    ...settings,
   });
 } catch (e) {
   console.log(e.message);
