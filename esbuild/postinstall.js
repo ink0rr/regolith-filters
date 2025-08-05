@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
-import { readFile, writeFile } from "fs/promises";
+import { existsSync } from "fs";
+import { cp, readFile, writeFile } from "fs/promises";
 import { join } from "path";
 
 async function readJson(path) {
@@ -13,14 +14,17 @@ async function latestVersion(packageName) {
     .then((json) => json.version);
 }
 
-async function main() {
-  const rootDir = process.env.ROOT_DIR;
-  if (!rootDir) {
+async function copyTemplate(dataPath) {
+  const target = join(dataPath, "scripts");
+  if (existsSync(target)) {
     return;
   }
-  const config = await readJson(join(rootDir, "/config.json"));
-  const manifestPath = join(rootDir, config.packs.behaviorPack, "manifest.json");
-  const manifest = await readJson(manifestPath);
+  const source = join(process.cwd(), "template");
+  await cp(source, target, { recursive: true });
+}
+
+async function updateManifest(path) {
+  const manifest = await readJson(path);
   if (
     manifest.modules.some((m) => m.type === "script") ||
     manifest.dependencies.some((d) => d.module_name === "@minecraft/server")
@@ -42,7 +46,24 @@ async function main() {
 
   const text = JSON.stringify(manifest, null, 2)
     .replace(/(?<=version": )\[[^\]]+\]/g, (v) => `[${JSON.parse(v).join(", ")}]`);
-  writeFile(manifestPath, text + "\n");
+  await writeFile(path, text + "\n");
 }
 
-main().catch(() => {}); // ignore errors
+async function main() {
+  const rootDir = process.env.ROOT_DIR;
+  if (!rootDir) {
+    return;
+  }
+  const config = await readJson(join(rootDir, "/config.json"));
+  const dataPath = join(rootDir, config.regolith.dataPath);
+  await Promise.all([
+    copyTemplate(dataPath),
+    updateManifest(join(rootDir, config.packs.behaviorPack, "manifest.json")),
+  ]);
+}
+
+try {
+  main();
+} catch {
+  // ignore errors
+}

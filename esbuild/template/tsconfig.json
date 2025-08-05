@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ES2015",
+      "ES2016.Array.Include",
+      "ES2017.ArrayBuffer",
+      "ES2017.Date",
+      "ES2017.Object",
+      "ES2017.String",
+      "ES2017.TypedArrays",
+      "ES2018.AsyncIterable",
+      "ES2018.AsyncGenerator",
+      "ES2018.Promise",
+      "ES2018.Regexp",
+      "ES2019.Array",
+      "ES2019.Object",
+      "ES2019.String",
+      "ES2019.Symbol",
+      "ES2020.BigInt",
+      "ES2020.Date",
+      "ES2020.Number",
+      "ES2015.Promise",
+      "ES2020.String",
+      "ES2020.Promise",
+      "ES2020.Symbol.WellKnown",
+      "ES2021.Promise",
+      "ES2021.String",
+      "ES2022.Array",
+      "ES2022.Error",
+      "ES2022.Object",
+      "ES2022.RegExp",
+      "ES2022.String",
+      "ES2023.Array",
+      "ES2023.Collection",
+      "ES2024.ArrayBuffer",
+      "ES2024.Collection",
+      "ES2024.Object",
+      "ES2024.Promise",
+      "ES2024.Regexp",
+      "ES2024.String"
+    ],
+    "target": "es2024",
+    "module": "es2022",
+    "moduleDetection": "force",
+    "allowJs": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "paths": {
+      "~/*": ["./*"]
+    }
+  }
+}
