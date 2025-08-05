@@ -1,6 +1,6 @@
-import * as esbuild from "https://deno.land/x/esbuild@v0.23.0/mod.js";
-import { denoPlugins } from "jsr:@luca/esbuild-deno-loader@0.10.3";
-import { resolve } from "jsr:@std/path@1.0.2";
+import { denoPlugins } from "jsr:@luca/esbuild-deno-loader";
+import { resolve } from "jsr:@std/path";
+import * as esbuild from "npm:esbuild";
 
 function parseArgs(args: string[]): [Record<string, unknown>, ...string[]] {
   try {
@@ -31,7 +31,7 @@ try {
     ...settings,
   });
 } catch (e) {
-  console.log(e.message);
+  console.error(e);
 } finally {
   esbuild.stop();
 }
