@@ -1,4 +1,4 @@
-import { denoPlugins } from "jsr:@luca/esbuild-deno-loader";
+import { denoPlugin } from "jsr:@deno/esbuild-plugin";
 import { resolve } from "jsr:@std/path";
 import * as esbuild from "npm:esbuild";
 
@@ -16,8 +16,8 @@ const [settings, path] = parseArgs(Deno.args);
 const configPath = resolve(Deno.env.get("ROOT_DIR")!, path ?? "./deno.json");
 
 try {
-  await esbuild.build({
-    plugins: [...denoPlugins({ configPath })],
+  const config: esbuild.BuildOptions = {
+    plugins: [denoPlugin({ configPath })],
     bundle: true,
     entryPoints: [
       "./data/scripts/main.ts",
@@ -27,11 +27,12 @@ try {
       "@minecraft/server-ui",
     ],
     format: "esm",
-    outfile: "./BP/scripts/main.js",
     ...settings,
-  });
-} catch (e) {
-  console.error(e);
+  };
+  if (!config.outdir && !config.outfile) {
+    config.outfile = "./BP/scripts/main.js";
+  }
+  await esbuild.build(config);
 } finally {
   esbuild.stop();
 }
