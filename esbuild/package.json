@@ -4,9 +4,9 @@
     "postinstall": "node postinstall.js"
   },
   "dependencies": {
-    "esbuild": "^0.25.8"
+    "esbuild": "^0.25.12"
   },
   "devDependencies": {
-    "@types/node": "latest"
+    "@types/node": "^25.0.3"
   }
 }
