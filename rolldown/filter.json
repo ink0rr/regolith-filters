@@ -1,0 +1,9 @@
+{
+  "filters": [
+    {
+      "name": "rolldown",
+      "runWith": "nodejs",
+      "script": "./main.js"
+    }
+  ]
+}
