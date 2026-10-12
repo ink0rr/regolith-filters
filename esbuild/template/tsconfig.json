@@ -43,6 +43,7 @@
     "module": "es2022",
     "moduleDetection": "force",
     "allowJs": true,
+    "experimentalDecorators": true,
 
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
