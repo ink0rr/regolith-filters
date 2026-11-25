@@ -5,8 +5,8 @@ Sync `manifest.json` files with your `config.json`
 ```jsonc
 {
   "name": "My project",
-  "version": "1.1.0", // Version of the project
-  "targetVersion": "1.19.50", // min_engine_version of the project
+  "version": "1.1.0", // Required, version of the project
+  "targetVersion": "1.26.0", // Optional, min_engine_version of the project
   "packs": {
     "behaviorPack": "./packs/BP",
     "resourcePack": "./packs/RP"
@@ -16,3 +16,9 @@ Sync `manifest.json` files with your `config.json`
   ]
 }
 ```
+
+## Settings
+
+| Property     | Type     | Default     | Description                                                          |
+| ------------ | -------- | ----------- | -------------------------------------------------------------------- |
+| `outputFile` | `string` | `undefined` | Output path for the version constants, relative to the `data` folder |

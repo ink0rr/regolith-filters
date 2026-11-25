@@ -4,8 +4,7 @@
     "./esbuild_deno",
     "./janitor",
     "./lazuli",
-    "./spawn_egg",
-    "./sync_manifest"
+    "./spawn_egg"
   ],
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,

@@ -1,0 +1,9 @@
+{
+  "name": "sync_manifest",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jsonc-parser": "^3.3.1",
+    "valibot": "^1.5.0"
+  }
+}

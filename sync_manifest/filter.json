@@ -2,8 +2,8 @@
   "filters": [
     {
       "name": "Sync Manifest",
-      "runWith": "deno",
-      "script": "./main.ts"
+      "runWith": "nodejs",
+      "script": "./main.js"
     }
   ]
 }

@@ -12,8 +12,8 @@
     "dataPath": "./packs/data",
     "filterDefinitions": {
       "sync_manifest": {
-        "runWith": "deno",
-        "script": "../main.ts"
+        "runWith": "nodejs",
+        "script": "../main.js"
       }
     },
     "profiles": {
